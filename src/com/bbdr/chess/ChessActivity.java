@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.util.Log;
+import android.content.res.Resources;
 
 public class ChessActivity extends Activity {
     
@@ -20,7 +21,7 @@ public class ChessActivity extends Activity {
 
     /** The size of a tile, in density pixels (dp). */
     public final int SIZE_TILE = 35;
-
+    
     /**
      * Gets the pixel size for the specified density pixels.
      * @param dp the density pixels to convert to pixels.
@@ -126,6 +127,11 @@ public class ChessActivity extends Activity {
         PieceMovementTest.testValidMovements(new Queen());
         // Test Knight movement.
         PieceMovementTest.testValidMovements(new Queen());
+        //Get the bitmaps from resources and pass by reference 
+        //to the ChessSprite Class-initBitmaps method
+        Resources r =  getResources();  
+        ChessSprite.initBitmaps(r);
+        
 
         // Set the board view.
         boardView = (ChessBoardView)findViewById(R.id.chessboardView);
