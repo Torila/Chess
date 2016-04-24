@@ -6,9 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.view.View;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.util.Log;
 import android.content.res.Resources;
 
 public class ChessActivity extends Activity {

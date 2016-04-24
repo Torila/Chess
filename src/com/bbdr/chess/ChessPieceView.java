@@ -3,12 +3,8 @@ package com.bbdr.chess;
 import android.util.AttributeSet;
 import android.view.View;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.graphics.RectF;
 
 public class ChessPieceView extends View {
     
@@ -47,7 +43,7 @@ public class ChessPieceView extends View {
         }
         // We don't want to do anything if the piece ID does
         // not map to a Bitmap. Otherwise, uh, exception.
-        if (pieceID == -1 || ChessSprite.bitmaps.length < pieceID || ChessSprite.bitmaps[pieceID] == null) {
+        if (!ChessSprite.contains(pieceID)) {
             // This should NOT have happened.
             // It's probably Bailey's fault.
             // Blame him if you cannot figure it out.

@@ -22,6 +22,18 @@ public class ChessSprite {
     public static final RectF rectDestination = new RectF();
     
     /**
+     * Checks if a bitmap for the sprite ID exists.
+     * @param spriteID the sprite ID to check for.
+     * @return true if a bitmap exists for the sprite ID.
+     */
+    public static boolean contains(int spriteID) {
+        if (spriteID == -1 || bitmaps.length < spriteID || bitmaps[spriteID] == null) {
+            return false;
+        }
+        return true;
+    }
+    
+    /**
      * Initializes the static class. This requires a reference to the
      * resources and must be called when the Activity begins.
      * @param r the resources containing the bitmaps.
