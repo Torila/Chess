@@ -57,8 +57,7 @@ public class ChessPieceView extends View {
         }
         
         // Set the rectangle that we are drawing to.
-        //rectDestination.set(0F, 0F, this.getMeasuredWidth(), this.getMeasuredHeight());
-        ChessSprite.rectDestination.set(0F, 0F, getPixels(SIZE_TILE), getPixels(SIZE_TILE));
+        ChessSprite.rectDestination.set(0F, 0F, this.getMeasuredWidth(), this.getMeasuredHeight());
         
         // Construct the matrix that transforms the Bitmap into our tile area.
         pieceTransMatrix.setRectToRect(ChessSprite.rectSource, ChessSprite.rectDestination,
