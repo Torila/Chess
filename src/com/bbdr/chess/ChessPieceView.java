@@ -20,8 +20,6 @@ public class ChessPieceView extends View {
     */
     public static final int SIZE_TILE = 35;
     protected static final Matrix pieceTransMatrix = new Matrix();
-    protected static final RectF rectSource = new RectF();
-    protected static final RectF rectDestination = new RectF();
     
     protected Piece piece = null;
     protected Position position = new Position(-1, -1);
@@ -59,10 +57,11 @@ public class ChessPieceView extends View {
         }
         
         // Set the rectangle that we are drawing to.
-        rectDestination.set(0F, 0F, this.getMeasuredWidth(), this.getMeasuredHeight());
+        //rectDestination.set(0F, 0F, this.getMeasuredWidth(), this.getMeasuredHeight());
+        ChessSprite.rectDestination.set(0F, 0F, getPixels(SIZE_TILE), getPixels(SIZE_TILE));
         
         // Construct the matrix that transforms the Bitmap into our tile area.
-        pieceTransMatrix.setRectToRect(rectSource, rectDestination,
+        pieceTransMatrix.setRectToRect(ChessSprite.rectSource, ChessSprite.rectDestination,
                 Matrix.ScaleToFit.END);
         
         // Draw the bitmap to the canvas according to the transformation matrix.

@@ -8,18 +8,25 @@ import android.graphics.RectF;
 
 public class ChessSprite {
     /**
-     This class is designed to be a static
-     class for creating an array of bitmaps 
-     and intialising them.
+     * This class is designed to be a static
+     * class for creating an array of bitmaps 
+     * and intialising them.
      */
     
-    public static Bitmap[] bitmaps = new Bitmap[Piece.getFingerprint(Piece.RANK_MAXVAL, Piece.PLAYER_MAXVAL) + 1];
+    // The array of bitmaps, accessed statically.
+    public static final Bitmap[] bitmaps = new Bitmap[Piece.getFingerprint(Piece.RANK_MAXVAL, Piece.PLAYER_MAXVAL) + 1];
     
-    // RectF rectSource = null;
-    //  RectF rectDestination = null;
+    // The source rectangle for canvas painting.
+    public static final RectF rectSource = new RectF();
+    // The destination rectangle for canvas painting.
+    public static final RectF rectDestination = new RectF();
     
+    /**
+     * Initializes the static class. This requires a reference to the
+     * resources and must be called when the Activity begins.
+     * @param r the resources containing the bitmaps.
+     */
     public static void initBitmaps(Resources r) {
-
         bitmaps[Piece.getFingerprint(Piece.RANK_PAWN, Piece.PLAYER_BLACK)] =
                 BitmapFactory.decodeResource(r, R.drawable.pawn_black);
         bitmaps[Piece.getFingerprint(Piece.RANK_ROOK, Piece.PLAYER_BLACK)] =
@@ -45,13 +52,14 @@ public class ChessSprite {
         bitmaps[Piece.getFingerprint(Piece.RANK_KING, Piece.PLAYER_WHITE)] =                         
                 BitmapFactory.decodeResource(r, R.drawable.king_white);
         
-        //rectSource = new RectF(0F, 0F, bitmaps[1].getWidth(),bitmaps[1].getHeight());
-        //rectDestination = new RectF(0F, 0F, bitmaps[1].getWidth(),bitmaps[1].getHeight());
+        // The sample bitmap, so that we can get the width and height from it.
+        Bitmap sampleBitmap = bitmaps[Piece.getFingerprint(Piece.RANK_PAWN, Piece.PLAYER_BLACK)];
         
-    
-      //Bitmap sBitmap = null;
-      //sBitmap = bitmaps[Piece.getFingerprint(Piece.RANK_PAWN, Piece.PLAYER_BLACK)];
-           
-        
+        // Set the source and destination rectangles.
+        // The source maps the sprite dimensions: (0, 0) to (width, height).
+        rectSource.set(0F, 0F, sampleBitmap.getWidth(), sampleBitmap.getHeight());
+        // The destination maps the canvas dimensions.
+        // This will need to be overridden on a per-use basis.
+        rectDestination.set(0F, 0F, sampleBitmap.getWidth(), sampleBitmap.getHeight());
     }
 }
